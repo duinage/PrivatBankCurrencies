@@ -2,9 +2,12 @@ package com.example.privatbankcurrencies.domain.usecases
 
 import com.example.privatbankcurrencies.domain.CurrencyItem
 import com.example.privatbankcurrencies.domain.DateItem
+import com.example.privatbankcurrencies.domain.Repository
 
-class GetExchangeRate {
+class GetExchangeRateUseCase(
+    private val repository: Repository
+) {
     fun getExRate(date: DateItem, currency: CurrencyItem){
-        TODO()
+        return repository.getExRate(date, currency)
     }
 }

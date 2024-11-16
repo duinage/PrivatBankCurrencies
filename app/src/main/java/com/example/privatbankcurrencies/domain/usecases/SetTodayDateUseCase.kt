@@ -1,12 +1,11 @@
 package com.example.privatbankcurrencies.domain.usecases
 
-import com.example.privatbankcurrencies.domain.DateItem
 import com.example.privatbankcurrencies.domain.Repository
 
-class SetAnotherDateUseCase(
+class SetTodayDateUseCase(
     private val repository: Repository
 ) {
-    fun setAnotherDate(date: DateItem){
-        repository.setAnotherDate(date)
+    fun setTodayDate(){
+        repository.setTodayDate()
     }
 }
