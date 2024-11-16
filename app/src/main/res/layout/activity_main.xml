@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:inputType="date"
             android:ems="10"
-            android:id="@+id/editTextDate"
+            android:id="@+id/etDate"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,45 +26,60 @@
             android:layout_height="106dp"
             tools:layout_editor_absoluteX="3dp"
             android:id="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+            app:layout_constraintTop_toBottomOf="@+id/etDate"
             app:layout_constraintBottom_toTopOf="@+id/recyclerView">
 
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="204dp"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp">
 
             <TextView
                     android:text="@string/currency"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/twCurrency1" />
+                    android:id="@+id/twCurrency1"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    />
 
             <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="Input real number"
+                    android:text=""
+                    android:layout_margin="15dp"
                     android:ems="10"
-                    android:id="@+id/editTextText" />
+                    android:id="@+id/etAmount"
+                    android:hint="Input real number" />
         </LinearLayout>
 
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp">
+
 
             <TextView
                     android:text="@string/currency_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/twCurrency2" />
+                    android:id="@+id/twCurrency2"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    />
 
             <TextView
                     android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/textView3"
+                    android:layout_margin="15dp"
+                    android:hint="Here's a result" />
         </LinearLayout>
     </LinearLayout>
 
