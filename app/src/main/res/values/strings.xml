@@ -2,4 +2,5 @@
     <string name="app_name">PrivatBankCurrencies</string>
     <string name="currency">Currency 1</string>
     <string name="currency_2">Currency 2</string>
+    <string name="select_date">Select Date</string>
 </resources>
