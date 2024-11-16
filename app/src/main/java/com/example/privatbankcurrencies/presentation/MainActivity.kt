@@ -1,4 +1,4 @@
-package com.example.privatbankcurrencies
+package com.example.privatbankcurrencies.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
