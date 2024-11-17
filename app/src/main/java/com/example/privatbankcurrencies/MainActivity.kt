@@ -3,11 +3,11 @@ package com.example.privatbankcurrencies
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.privatbankcurrencies.databinding.ActivityMainBinding
-import com.example.privatbankcurrencies.item.CurrencyItem
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +34,14 @@ class MainActivity : AppCompatActivity() {
                 val adapter = ItemAdapter(currencyData.exchangeRate)
                 binding.recyclerView.layoutManager = LinearLayoutManager(this)
                 binding.recyclerView.adapter = adapter
+            }
+        }
+
+        viewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
             }
         }
 

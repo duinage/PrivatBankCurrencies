@@ -7,10 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.privatbankcurrencies.item.CurrencyItem
 import com.example.privatbankcurrencies.retrofit.RetrofitPrivate
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -33,7 +31,7 @@ class MainViewModel : ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    private var currentJob: Job? = null  // Змінна для зберігання корутини
+    private var currentJob: Job? = null
 
     private val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
 
