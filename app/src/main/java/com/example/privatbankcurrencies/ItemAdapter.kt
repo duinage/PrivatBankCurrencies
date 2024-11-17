@@ -16,7 +16,7 @@ class ItemAdapter(private val items: List<ExchangeRate>) :
             binding.tvCurrency1.text = item.baseCurrency
             binding.tvCurrency2.text = item.currency
 
-            binding.tvBuy.text = "Buy: ${item.purchaseRate}"
+            binding.tvBuy.text = " Buy: ${item.purchaseRate}"
             binding.tvSale.text = "Sale: ${item.saleRate}"
         }
     }

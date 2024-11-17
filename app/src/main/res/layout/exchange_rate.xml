@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
             android:id="@+id/cardView_currency"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="94dp"
             android:layout_margin="4dp"
             app:cardBackgroundColor="#a64ae2"
             app:cardCornerRadius="7dp"
@@ -19,11 +19,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="384dp"
-                android:layout_height="64dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <TextView
-                    android:id="@+id/tvBuy"
+                    android:id="@+id/tvCurrency2"
                     android:layout_width="wrap_content"
                     android:layout_height="26dp"
                     android:text="@string/currency"
@@ -32,32 +32,29 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.71"
+                    app:layout_constraintVertical_bias="0.725"
                     android:textAllCaps="true"
                     android:textAlignment="center"
                     android:textStyle="bold"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintEnd_toStartOf="@+id/tvSale"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toStartOf="@+id/tvSale" />
 
             <TextView
-                    android:id="@+id/tvCurrency2"
-                    android:layout_width="153dp"
-                    android:layout_height="26dp"
+                    android:id="@+id/tvBuy"
+                    android:layout_width="150dp"
+                    android:layout_height="28dp"
                     android:text="@string/currency"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.026"
+                    app:layout_constraintVertical_bias="0.183"
                     android:textAllCaps="true"
                     android:textAlignment="center"
                     android:textStyle="bold"
-                    android:layout_marginStart="204dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvCurrency1"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintHorizontal_bias="0.5" />
 
             <TextView
                     android:id="@+id/tvCurrency1"
@@ -67,32 +64,29 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.052"
+                    app:layout_constraintVertical_bias="0.176"
                     android:textAllCaps="true"
                     android:textAlignment="center"
                     android:textStyle="bold"
-                    app:layout_constraintHorizontal_bias="0.507"
-                    app:layout_constraintEnd_toStartOf="@+id/tvSale" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toStartOf="@+id/tvBuy" />
 
             <TextView
                     android:id="@+id/tvSale"
-                    android:layout_width="153dp"
+                    android:layout_width="150dp"
                     android:layout_height="26dp"
                     android:text="@string/currency"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.71"
                     android:textAllCaps="true"
                     android:textAlignment="center"
                     android:textStyle="bold"
-                    android:layout_marginStart="204dp"
-                    app:layout_constraintStart_toEndOf="@+id/tvBuy"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tvCurrency2"
                     app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
