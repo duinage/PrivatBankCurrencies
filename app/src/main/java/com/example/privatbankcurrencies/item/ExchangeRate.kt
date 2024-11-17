@@ -10,10 +10,6 @@ data class ExchangeRate(
     val currency: String?,
     @SerializedName("purchaseRate")
     val purchaseRate: Double?,
-    @SerializedName("purchaseRateNB")
-    val purchaseRateNB: Double?,
     @SerializedName("saleRate")
-    val saleRate: Double?,
-    @SerializedName("saleRateNB")
-    val saleRateNB: Double?
+    val saleRate: Double?
 )

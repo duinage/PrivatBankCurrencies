@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="579dp"
             android:id="@+id/recyclerView"
-            tools:listitem="@layout/currency_item"
+            tools:listitem="@layout/exchange_rate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />

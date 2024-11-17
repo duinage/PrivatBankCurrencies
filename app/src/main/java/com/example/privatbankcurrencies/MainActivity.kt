@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.privatbankcurrencies.databinding.ActivityMainBinding
+import com.example.privatbankcurrencies.item.CurrencyItem
 import com.example.privatbankcurrencies.retrofit.RetrofitPrivate
 import java.util.Calendar
 
@@ -42,6 +44,12 @@ class MainActivity : AppCompatActivity() {
                 viewModel.onDateSelected(selectedYear, selectedMonth, selectedDay)
             }, year, month, day).show()
         }
+
+
+//        val adapter = ItemAdapter(currencyItems)
+//        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+//        binding.recyclerView.adapter = adapter
+
     }
     companion object {
         const val TAG = "XXX"
