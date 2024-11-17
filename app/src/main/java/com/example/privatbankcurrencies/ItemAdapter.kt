@@ -1,5 +1,6 @@
 package com.example.privatbankcurrencies
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,12 +11,13 @@ class ItemAdapter(private val items: List<ExchangeRate>) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ExchangeRateBinding) : RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(item: ExchangeRate) {
             binding.tvCurrency1.text = item.baseCurrency
             binding.tvCurrency2.text = item.currency
 
-            binding.tvBuy.text = item.purchaseRate.toString()
-            binding.tvSale.text = item.saleRate.toString()
+            binding.tvBuy.text = "Buy: ${item.purchaseRate}"
+            binding.tvSale.text = "Sale: ${item.saleRate}"
         }
     }
 

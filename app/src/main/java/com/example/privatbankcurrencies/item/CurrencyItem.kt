@@ -13,5 +13,5 @@ data class CurrencyItem(
     @SerializedName("date")
     val date: String?,
     @SerializedName("exchangeRate")
-    val exchangeRate: List<ExchangeRate?>?
+    val exchangeRate: List<ExchangeRate>
 )

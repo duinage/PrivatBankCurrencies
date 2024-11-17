@@ -20,17 +20,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/recyclerView"
             app:layout_constraintVertical_bias="0.439"
-            android:hint="@string/select_date"
             android:focusable="false"
-            />
+            android:textAlignment="center" />
+
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="579dp"
+            android:layout_height="0dp"
             android:id="@+id/recyclerView"
             tools:listitem="@layout/exchange_rate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.75"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

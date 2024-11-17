@@ -31,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.currencyData.observe(this) { currencyData ->
             if (currencyData != null) {
                 Log.d(TAG, "onCreate: $currencyData")
+                val adapter = ItemAdapter(currencyData.exchangeRate)
+                binding.recyclerView.layoutManager = LinearLayoutManager(this)
+                binding.recyclerView.adapter = adapter
             }
         }
 
@@ -44,10 +47,6 @@ class MainActivity : AppCompatActivity() {
             }, year, month, day).show()
         }
 
-
-//        val adapter = ItemAdapter(currencyItems)
-//        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-//        binding.recyclerView.adapter = adapter
 
     }
     companion object {
