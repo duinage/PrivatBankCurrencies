@@ -4,8 +4,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.privatbankcurrencies.item.CurrencyItem
 import com.example.privatbankcurrencies.retrofit.RetrofitPrivate
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -22,10 +29,15 @@ class MainViewModel : ViewModel() {
     val currencyData: LiveData<CurrencyItem?>
         get() = _currencyData
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
+    private var currentJob: Job? = null  // Змінна для зберігання корутини
+
     private val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
 
     init {
-        // Set the current date by default
         val currentDate = dateFormat.format(Calendar.getInstance().time)
         _selectedDate.value = currentDate
         fetchCurrencyData(currentDate)
@@ -37,17 +49,28 @@ class MainViewModel : ViewModel() {
 
         val formattedDate = dateFormat.format(selectedDate.time)
         _selectedDate.value = formattedDate
+
+        currentJob?.cancel()
+
         fetchCurrencyData(formattedDate)
     }
 
     private fun fetchCurrencyData(date: String) {
-        retrofitPrivate.getCurrencyExchange(date) { currencyItem ->
-            if (currencyItem != null) {
-                Log.d(TAG, "API Response: $currencyItem")
-                _currencyData.value = currencyItem
-            } else {
-                Log.d(TAG, "API Call failed or returned null.")
-                _currencyData.value = null
+        _isLoading.value = true
+
+        currentJob = viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val currencyItem = retrofitPrivate.getCurrencyExchange(date)
+                withContext(Dispatchers.Main) {
+                    _currencyData.value = currencyItem
+                    _isLoading.value = false
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _currencyData.value = null
+                    _isLoading.value = false
+                    Log.e(TAG, "Error fetching currency data", e)
+                }
             }
         }
     }
@@ -56,3 +79,4 @@ class MainViewModel : ViewModel() {
         const val TAG = "XXX"
     }
 }
+

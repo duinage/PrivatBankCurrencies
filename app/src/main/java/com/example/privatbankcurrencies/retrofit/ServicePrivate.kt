@@ -9,7 +9,7 @@ interface ServicePrivate {
     // https://api.privatbank.ua/p24api/exchange_rates?date=01.12.2014
 
     @GET("p24api/exchange_rates")
-    fun getCurrencyExchange(
+    suspend fun getCurrencyExchange(
         @Query("date") date : String
-    ) : Call<CurrencyItem>
+    ) : CurrencyItem
 }
