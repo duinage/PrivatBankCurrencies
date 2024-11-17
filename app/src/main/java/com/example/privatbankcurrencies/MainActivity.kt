@@ -2,11 +2,12 @@ package com.example.privatbankcurrencies
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.privatbankcurrencies.databinding.ActivityMainBinding
-import java.text.SimpleDateFormat
+import com.example.privatbankcurrencies.retrofit.RetrofitPrivate
 import java.util.Calendar
-import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,36 +15,37 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private val viewModel by viewModels<MainViewModel>()
+
+    private val retrofitPrivate = RetrofitPrivate()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         val calendar = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
-        // current date as a hint
-        binding.etDate.hint = dateFormat.format(calendar.time)
+        viewModel.selectedDate.observe(this) { date ->
+            binding.etDate.hint = date
+        }
 
-        // save time
-        var chosenDate: String = dateFormat.format(calendar.time)
+        viewModel.currencyData.observe(this) { currencyData ->
+            if (currencyData != null) {
+                Log.d(TAG, "onCreate: $currencyData")
+            }
+        }
 
-
-        // calling calendar by clicking on edit text (that's why it's not focusable in xml file)
         binding.etDate.setOnClickListener {
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-                val selectedDate = Calendar.getInstance()
-                selectedDate.set(selectedYear, selectedMonth, selectedDay)
-
-                val newDate = dateFormat.format(selectedDate.time)
-                binding.etDate.setText(newDate)
-
-                chosenDate = newDate
-
+                viewModel.onDateSelected(selectedYear, selectedMonth, selectedDay)
             }, year, month, day).show()
         }
+    }
+    companion object {
+        const val TAG = "XXX"
     }
 }
