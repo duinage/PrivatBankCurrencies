@@ -7,10 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.privatbankcurrencies.item.CurrencyItem
 import com.example.privatbankcurrencies.retrofit.RetrofitPrivate
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -60,7 +58,9 @@ class MainViewModel : ViewModel() {
 
         currentJob = viewModelScope.launch(Dispatchers.IO) {
             try {
+                Log.d(TAG, "Fetching data at: ${System.currentTimeMillis()}")
                 val currencyItem = retrofitPrivate.getCurrencyExchange(date)
+                Log.d(TAG, "Data fetched at: ${System.currentTimeMillis()}")
                 withContext(Dispatchers.Main) {
                     _currencyData.value = currencyItem
                     _isLoading.value = false
