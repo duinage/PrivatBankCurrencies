@@ -1,7 +1,6 @@
 package com.example.privatbankcurrencies.retrofit
 
 import com.example.privatbankcurrencies.item.CurrencyItem
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

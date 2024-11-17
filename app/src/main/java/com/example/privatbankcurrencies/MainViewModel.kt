@@ -58,7 +58,9 @@ class MainViewModel : ViewModel() {
 
         currentJob = viewModelScope.launch(Dispatchers.IO) {
             try {
+                Log.d(TAG, "Fetching data at: ${System.currentTimeMillis()}")
                 val currencyItem = retrofitPrivate.getCurrencyExchange(date)
+                Log.d(TAG, "Data fetched at: ${System.currentTimeMillis()}")
                 withContext(Dispatchers.Main) {
                     _currencyData.value = currencyItem
                     _isLoading.value = false
